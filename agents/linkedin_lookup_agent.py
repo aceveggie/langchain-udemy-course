@@ -8,6 +8,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool
 from langchain.agents import (create_react_agent, AgentExecutor)
+from tools.tools import get_profile_url_tavily
 
 def lookup(name: str) -> str:
     llm = ChatOpenAI(
@@ -20,7 +21,7 @@ def lookup(name: str) -> str:
     tools_for_agent = [
         Tool(
             name = 'Crawl Google for LinkedIn profile page',
-            func='?',
+            func=get_profile_url_tavily,
             description='useful for when you need to get  LinkedIn profile page URL',
         )
     ]
@@ -37,3 +38,6 @@ def lookup(name: str) -> str:
     linkedin_profile_url = result['output']
     return linkedin_profile_url
 
+if __name__ == '__main__':
+    linked_in_url = lookup(name='Rahul Kavi ServiceNow LinkedIn')
+    print(linked_in_url)
