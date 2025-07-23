@@ -31,7 +31,7 @@ def lookup(name: str) -> str:
         tools=tools_for_agent,
         prompt=react_prompt,
     )
-    agent_executor = AgentExecutor(agent=agent, tools=tools_for_agent, verbose=True)
+    agent_executor = AgentExecutor(agent=agent, tools=tools_for_agent, verbose=False)
     result = agent_executor.invoke(
         input = {'input':prompt_template.format_prompt(name_of_person = name)}
     )
@@ -40,4 +40,4 @@ def lookup(name: str) -> str:
 
 if __name__ == '__main__':
     linked_in_url = lookup(name='Rahul Kavi ServiceNow LinkedIn')
-    print(linked_in_url)
+    # print(linked_in_url)
