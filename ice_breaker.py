@@ -18,7 +18,7 @@ def ice_break_with(name: str) -> str:
     given the linkedin information {information} about a person, I want you to create:
     1. A short summary
     2. two interesting facts about their career (not linkedin profile).
-    \n{format_instructions}
+    \nReturn the object in the following format: {format_instructions}
     '''
     summary_prompt_template = PromptTemplate(
         input_variables=['information'],
