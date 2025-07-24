@@ -31,7 +31,7 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
     data = {
         k: v
         for k, v in data.items()
-        if v not in ([], "", "", None)
+        if (v not in ([], "", "") and k != 'photoUrl') or k == 'photoUrl'  # Always keep photoUrl
         and k not in ['certifications', 'languages', 'skills', 'work', 'education']
     }
     return data
